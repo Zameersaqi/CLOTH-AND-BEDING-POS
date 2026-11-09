@@ -1,0 +1,6 @@
+{
+  "name": "Arooj Cloth and Bedsheet Parda - Desktop POS",
+  "description": "Complete offline Windows desktop POS software for textile, clothing, and bedsheet retail in Pakistan with visual product cards, editable cart prices, SQLite database, thermal receipts, and installer packaging.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

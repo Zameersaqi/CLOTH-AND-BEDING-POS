@@ -1,0 +1,202 @@
+/* Arooj Cloth and Bedsheet Parda - Modern Retail Desktop POS Theme */
+
+QMainWindow, QDialog {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: 'Segoe UI', 'SF Pro Text', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+}
+
+QWidget {
+    color: #1e293b;
+    font-size: 13px;
+}
+
+/* Primary Header */
+#headerWidget {
+    background-color: #064e3b;
+    border-bottom: 2px solid #047857;
+    padding: 8px 16px;
+}
+
+#headerTitle {
+    color: #f0fdf4;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#headerUrdu {
+    color: #86efac;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#headerSubtitle {
+    color: #a7f3d0;
+    font-size: 12px;
+}
+
+/* Category Bar */
+#categoryScroll {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+QPushButton.categoryBtn {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+}
+
+QPushButton.categoryBtn:hover {
+    background-color: #e2e8f0;
+    border-color: #059669;
+    color: #064e3b;
+}
+
+QPushButton.categoryBtn:checked, QPushButton.categoryBtn.active {
+    background-color: #059669;
+    color: #ffffff;
+    border-color: #047857;
+}
+
+/* Product Cards */
+QFrame.productCard {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QFrame.productCard:hover {
+    border: 2px solid #059669;
+    background-color: #f0fdf4;
+}
+
+QLabel.cardTitle {
+    font-weight: 700;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+QLabel.cardPrice {
+    font-weight: 700;
+    font-size: 15px;
+    color: #047857;
+}
+
+QLabel.cardStock {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* Cart Panel */
+#cartPanel {
+    background-color: #ffffff;
+    border-left: 2px solid #e2e8f0;
+    padding: 12px;
+}
+
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    gridline-color: #f1f5f9;
+    selection-background-color: #ecfdf5;
+    selection-color: #064e3b;
+}
+
+QHeaderView::section {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    padding: 8px 4px;
+    border: none;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+/* Action Buttons */
+QPushButton.primaryBtn {
+    background-color: #059669;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+QPushButton.primaryBtn:hover {
+    background-color: #047857;
+}
+
+QPushButton.primaryBtn:pressed {
+    background-color: #065f46;
+}
+
+QPushButton.secondaryBtn {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: 600;
+}
+
+QPushButton.secondaryBtn:hover {
+    background-color: #e2e8f0;
+}
+
+QPushButton.dangerBtn {
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: 600;
+}
+
+QPushButton.dangerBtn:hover {
+    background-color: #dc2626;
+}
+
+/* Checkout Big Button */
+#completeSaleBtn {
+    background-color: #10b981;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+}
+
+#completeSaleBtn:hover {
+    background-color: #059669;
+}
+
+/* Summary Box */
+#summaryBox {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: #0f172a;
+}
+
+QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus {
+    border-color: #059669;
+    outline: none;
+}

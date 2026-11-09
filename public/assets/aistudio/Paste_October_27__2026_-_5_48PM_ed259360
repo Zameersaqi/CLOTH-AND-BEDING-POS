@@ -1,0 +1,1126 @@
+# ULTIMATE MASTER PROMPT
+# AROOJ CLOTH AND BEDSHEET PARDA
+## Complete Python Desktop POS Software From Scratch
+
+You are an expert Python desktop application architect, senior Python developer, retail POS specialist, textile inventory management consultant, database engineer, UI/UX designer, Windows deployment engineer, thermal printing specialist, cybersecurity engineer, and software QA engineer.
+
+Your task is to design, develop, test, and deliver a complete, professional, production-oriented Windows desktop POS application from ZERO, exclusively using Python for the application's implementation.
+
+This is a NEW PROJECT. Do not assume that an existing POS codebase must be reused.
+
+The final application must be easy for a non-technical shop owner and ordinary shop staff to operate. It must work offline, store its data locally, include a preloaded editable product catalog, provide visual product cards for rapid billing, support editable prices in the cart, print professional thermal receipts, and be packaged into a Windows installer using Inno Setup.
+
+Do not deliver only a plan, mockup, tutorial, or incomplete prototype. Generate the actual project files, implement the functionality, run tests wherever execution is available, and provide clear build and installation instructions.
+
+# PART 1: BUSINESS PROFILE
+
+Business name: Arooj Cloth and Bedsheet Parda
+
+Business type: Clothing, bedding, curtains, fabric, and home textile retail.
+
+Country: Pakistan.
+
+Default currency: Pakistani Rupee (PKR).
+
+Default language: English, with optional Urdu interface support where practical.
+
+Target platform: Windows desktop.
+
+Programming language: Python only for the application code.
+
+Database: Local SQLite database, unless a clearly documented technical reason requires another local database.
+
+Recommended GUI framework: PySide6 (Qt for Python).
+
+Packaging: PyInstaller.
+
+Windows installer: Inno Setup.
+
+Primary use: One physical retail shop on one Windows computer.
+
+Internet requirement: The core application must work without internet.
+
+Data ownership: The shop owner must retain control of all business data locally.
+
+Do not require a cloud subscription, mandatory online login, or external API to run normal billing, inventory, reports, or backups.
+
+# PART 2: REQUIRED TECHNOLOGY AND ARCHITECTURE
+
+Use a maintainable Python architecture.
+
+Recommended structure:
+
+- PySide6 for the desktop interface.
+- SQLite for local business data.
+- SQL transactions and foreign-key constraints for data integrity.
+- A separate database repository/data access layer.
+- Separate business logic/services.
+- Separate user interface components.
+- Separate printing and report services.
+- Separate backup and restore services.
+- A configuration/settings module.
+- A migration system for database schema changes.
+- pytest for automated tests.
+- PyInstaller for the Windows executable.
+- Inno Setup for the Windows installation package.
+
+Use compatible, maintained dependencies. Pin tested dependency versions in requirements.txt.
+
+Keep business logic independent of the user interface wherever practical.
+
+Do not put the entire application into one enormous Python file. Use a modular project structure.
+
+Avoid unnecessary dependencies, complex frameworks, cloud services, and paid libraries.
+
+Use appropriate Decimal-based financial calculations or an equivalent fixed-point representation. Do not rely on ordinary binary floating-point arithmetic for money calculations.
+
+Store financial amounts using a consistent, documented representation that avoids rounding errors.
+
+Use parameterized SQL queries, proper validation, safe exception handling, and database transactions.
+
+Never embed passwords, private keys, or API secrets in the application.
+
+# PART 3: COMPLETE PRELOADED PRODUCT CATALOG
+
+This is one of the highest-priority requirements.
+
+When the application is installed and opened for the first time, the shop's product categories, subcategories, sample product types, and useful product templates must already exist.
+
+The owner should not have to create every category manually.
+
+Implement a versioned seed-data system that automatically creates the initial catalog when the database is initialized for the first time.
+
+Important distinction:
+- Preload categories, product templates, common sizes, configurable varieties, units, and example product names.
+- Do not invent actual supplier brands, purchase costs, selling prices, or physical stock quantities.
+- Mark any sample product records as editable templates or examples.
+- Allow the owner to enter actual prices and stock later.
+- Never treat a sample product as real stock without an explicit opening-stock entry.
+
+Preload the following catalog.
+
+## A. Razai and bedding
+
+Category: Razai
+
+Subcategories and templates:
+- Single Razai
+- Double Razai
+- King-size Razai
+- Queen-size Razai
+- Cotton Razai
+- Polyester-filled Razai
+- Printed Razai
+- Plain Razai
+- Lightweight Razai
+- Heavy Razai
+- Winter Razai
+- Other Razai
+
+Allow custom filling type, fabric, size, color, weight, design, and brand.
+
+Do not assume all these types are stocked. They are editable catalog templates.
+
+## B. Kambal
+
+Category: Kambal
+
+Templates:
+- Single Kambal
+- Double Kambal
+- King-size Kambal
+- Queen-size Kambal
+- Lightweight Kambal
+- Heavy Kambal
+- Plain Kambal
+- Printed Kambal
+- Soft Kambal
+- Other Kambal
+
+## C. AC Kambal
+
+Category: AC Kambal
+
+Templates:
+- Single AC Kambal
+- Double AC Kambal
+- Lightweight AC Kambal
+- Other AC Kambal
+
+Allow size, color, design, brand, and fabric variations.
+
+## D. Khais
+
+Category: Khais
+
+Templates:
+- Single Khais
+- Double Khais
+- Plain Khais
+- Printed Khais
+- Traditional Khais
+- Other Khais
+
+Support configurable dimensions, colors, designs, and quality.
+
+## E. Bedsheets
+
+Category: Bedsheets
+
+Templates:
+- Single Bedsheet
+- Double Bedsheet
+- Queen Bedsheet
+- King Bedsheet
+- Printed Bedsheet
+- Plain Bedsheet
+- Cotton Bedsheet
+- Other Bedsheets
+
+Also support:
+- Bedsheet sets
+- Bedsheet with pillow covers
+- Pillow covers
+- Other bedding sets
+
+The owner must be able to specify exactly which items a set contains.
+
+## F. Bridal Razai Sets
+
+Category: Bridal Razai Sets
+
+Templates:
+- Bridal Razai Set
+- Decorative Razai Set
+- Embroidered Bedding Set
+- Custom Bridal Set
+
+Allow custom components, quantities, dimensions, colors, designs, and prices.
+
+## G. Cushions
+
+Category: Cushions
+
+Templates:
+- Decorative Cushion
+- Plain Cushion
+- Printed Cushion
+- Filled Cushion
+- Cushion Cover
+- Cushion Set
+- Other Cushions
+
+Support:
+- Piece-based stock.
+- Optional weight in kilograms or grams.
+- Optional dimensions.
+- Filling material.
+- Color and design.
+- Separate stock tracking for covers and filled cushions.
+
+Weight must be an optional attribute, not a mandatory field for every cushion.
+
+## H. Kambal Sets
+
+Category: Kambal Sets
+
+Templates:
+- Single Kambal Set
+- Double Kambal Set
+- Family Kambal Set
+- Custom Kambal Set
+
+Allow configurable bundle components rather than assuming every set contains the same items.
+
+## I. Abayas
+
+Category: Abayas
+
+Templates:
+- Plain Abaya
+- Embroidered Abaya
+- Party Wear Abaya
+- Open Abaya
+- Closed Abaya
+- Front-Open Abaya
+- Other Abayas
+
+Configurable variants:
+- XS, S, M, L, XL, XXL.
+- Custom numeric or length-based sizes.
+- Black and other custom colors.
+- Design, fabric, brand, and style.
+- Optional matching scarf.
+
+## J. Ladies' stitched suiting
+
+Category: Ladies Stitched Suiting
+
+Templates:
+- Two-Piece Stitched Suit
+- Three-Piece Stitched Suit
+- Casual Suit
+- Formal Suit
+- Embroidered Suit
+- Printed Suit
+- Other Stitched Suits
+
+Support size, color, design, brand, collection, and style.
+
+Each independently stocked size/color combination must have its own SKU or variant identifier.
+
+## K. Ladies' unstitched fabric
+
+Category: Ladies Unstitched Suiting
+
+Templates:
+- Two-Piece Suit Fabric
+- Three-Piece Suit Fabric
+- Lawn Fabric
+- Cotton Fabric
+- Khaddar Fabric
+- Linen Fabric
+- Embroidered Fabric
+- Printed Fabric
+- Other Ladies' Fabric
+
+Support piece-based suit sets and length-based fabric as different configurable selling units.
+
+## L. Gents' cloth and suiting
+
+Category: Gents Cloth
+
+Templates:
+- Branded Suiting
+- Box-Packed Suiting
+- Suiting Thaan
+- Unstitched Gents Fabric
+- Cotton Fabric
+- Wash-and-Wear Fabric
+- Winter Suiting
+- Other Gents Cloth
+
+Support:
+- Meter-based sales.
+- Yard-based sales where required.
+- Piece-based packaged products.
+- Fabric roll or thaan identification.
+- Brand, quality, color, design, and fabric type.
+- Optional roll number and remaining length.
+
+Do not assume a thaan has a universal length. The owner must record its actual length.
+
+## M. Curtains and Parda
+
+Category: Curtains and Parda
+
+Templates:
+- Ready-Made Curtains
+- Curtain Fabric
+- Plain Parda
+- Printed Parda
+- Embroidered Parda
+- Other Curtains
+
+Support:
+- Piece-based ready-made curtains.
+- Meter-based curtain fabric.
+- Custom dimensions.
+- Color and design.
+- Optional room or window measurements.
+- Customer-specific curtain orders.
+
+## N. Scarves
+
+Category: Scarves
+
+Templates:
+- Printed Scarf
+- Plain Scarf
+- Branded Scarf
+- Embroidered Scarf
+- Other Scarves
+
+Support color, design, brand, material, and piece-based stock.
+
+## O. Staller / Stole
+
+Category: Staller and Stoles
+
+Templates:
+- Plain Staller
+- Printed Staller
+- Embroidered Staller
+- Branded Staller
+- Other Stoles
+
+Allow the owner to edit spelling, category names, and product names.
+
+## P. Additional configurable categories
+
+Create editable categories for:
+- Accessories
+- Cushion Covers
+- Pillow Covers
+- Fabric by Meter
+- Fabric by Yard
+- Bedding Bundles
+- Custom Products
+- Other Shop Items
+
+Do not force the owner to use every category.
+
+# PART 4: PRELOADED CATALOG EXPERIENCE
+
+The first-run application must provide a complete initial catalog.
+
+Create:
+- Categories and subcategories.
+- Editable product templates.
+- Common clothing sizes.
+- Common shoe sizes only if the owner enables a shoe category.
+- Common color choices.
+- Design and pattern fields.
+- Brand management.
+- Unit management.
+- Product variant templates.
+- Product-card images or neutral local placeholders.
+
+Use local assets for essential UI elements so the catalog remains available offline.
+
+Do not download product images at runtime.
+
+Do not use copyrighted brand logos or misleading product photos. Use neutral placeholders or owner-supplied images.
+
+Provide a one-click way to:
+- Add a template to the real product catalog.
+- Edit its details.
+- Create variants.
+- Enter actual prices.
+- Enter opening stock.
+- Assign a barcode.
+- Add an optional product image.
+
+Seed data must be idempotent: reopening the application must not create duplicate categories or products.
+
+Catalog updates must not overwrite prices, stock, or product edits entered by the owner.
+
+# PART 5: VISUAL PRODUCT-CARD BILLING SCREEN
+
+The POS billing screen must be designed around clickable product cards.
+
+This is a core requirement, not an optional visual feature.
+
+## Main billing layout
+
+Create a clean desktop screen with:
+
+Left or central area:
+- Category buttons.
+- Subcategory filters.
+- Search box.
+- Product cards.
+- Barcode input.
+- Optional brand, size, and color filters.
+
+Right-side area:
+- Current cart.
+- Item quantities.
+- Editable selling prices.
+- Line totals.
+- Discount controls.
+- Subtotal.
+- Grand total.
+- Payment controls.
+- Complete Sale button.
+- Print Receipt button where appropriate.
+
+Make the layout adjustable for common Windows screen resolutions.
+
+## Product cards
+
+Every active product or variant must be represented by a visual card.
+
+Each card should display:
+- Product image or placeholder.
+- Product name.
+- Variant details such as size, color, and design.
+- Selling price if configured.
+- SKU or short code when useful.
+- Stock availability if stock tracking is enabled.
+
+Clicking a product card must immediately add the selected item to the current cart.
+
+If a product has multiple variants:
+- Open a compact variant selector.
+- Let the cashier select size, color, design, or other required variant.
+- Add the selected variant to the cart.
+
+If a product has only one sellable variant, add it directly.
+
+For products sold by meter, yard, or weight, request the quantity when necessary.
+
+Do not add a product with an ambiguous variant to the cart without selecting the correct variant.
+
+## Card interaction
+
+- Repeated clicks add additional quantity for the same variant where appropriate.
+- Search and category filters update the cards quickly.
+- The current cart must remain intact when changing categories.
+- Inactive products must not be sold.
+- Stock warnings must be clear.
+- Out-of-stock sales must follow a configurable policy.
+- Card layout and text must remain readable.
+- Product images must not slow down checkout.
+
+## Category buttons
+
+Create large, easy-to-click category buttons for:
+- Razai
+- Kambal
+- AC Kambal
+- Khais
+- Bedsheets
+- Bridal Sets
+- Cushions
+- Kambal Sets
+- Abayas
+- Ladies Stitched Suits
+- Ladies Unstitched Suits
+- Gents Cloth
+- Curtains and Parda
+- Scarves
+- Staller / Stoles
+- Other Items
+
+Categories must be loaded dynamically from the database. Do not hardcode the screen so that new categories require source-code changes.
+
+# PART 6: EDITABLE CART PRICES
+
+The owner specifically needs selling prices to be editable during billing.
+
+For every cart item, show:
+- Product name.
+- Variant.
+- Quantity.
+- Unit.
+- Original catalog selling price.
+- Actual transaction price.
+- Line subtotal.
+- Discount, if any.
+- Line total.
+
+Allow an authorized user to edit the transaction selling price directly in the cart.
+
+Support customer-negotiated prices.
+
+The edited price must affect the line total, invoice total, payment due, and profit calculation correctly.
+
+Important rules:
+1. Never change the master catalog selling price merely because a price was edited in one transaction.
+2. Keep the original catalog price and actual transaction price separately.
+3. Allow a manager-defined maximum discount or minimum selling price.
+4. Require a manager PIN or authorized approval when configured limits are exceeded.
+5. Record the user, original price, revised price, timestamp, and reason for exceptional changes.
+6. Show a clear indicator when a cart price differs from the catalog price.
+7. Recalculate totals immediately after changes.
+8. Prevent invalid negative prices unless a specific authorized adjustment workflow supports them.
+9. Do not allow a cashier to bypass price controls by editing the displayed UI alone.
+10. Keep the price-editing workflow fast and simple.
+
+The default setup should allow the owner to configure price-editing permissions according to the shop's needs.
+
+# PART 7: CART AND BILLING WORKFLOW
+
+Implement:
+- Add item by product card.
+- Add item by barcode.
+- Search product and add.
+- Edit quantity.
+- Edit transaction price.
+- Remove item.
+- Clear cart with confirmation.
+- Item-level discounts.
+- Bill-level discounts.
+- Hold bill.
+- Resume held bill.
+- Select customer.
+- Cash payment.
+- Other configurable payment methods.
+- Split payments.
+- Credit sale if enabled.
+- Change calculation for cash payments.
+- Print receipt.
+- Reprint a saved receipt.
+- Cancel an unpaid or completed transaction through a controlled reversal workflow.
+
+Use unique invoice numbers and safe transaction handling.
+
+A sale must be saved exactly once. Printing a receipt must not create another sale.
+
+Never deduct inventory before the sale is safely committed.
+
+Never leave a partially saved sale or partially deducted stock after a database failure.
+
+# PART 8: THERMAL PRINTER AND RECEIPT DESIGN
+
+Support common thermal receipt printers, particularly 58 mm and 80 mm paper widths.
+
+The owner must be able to select the printer, paper width, and receipt format.
+
+Use an appropriate printing approach for the actual Windows environment, such as Windows printing APIs, Qt printing support, or ESC/POS-compatible output where supported.
+
+Do not assume every printer supports every command.
+
+Provide:
+- Printer selection.
+- Test print.
+- Paper-width selection.
+- Configurable margins and font sizes.
+- Receipt preview.
+- Safe receipt reprinting.
+- Clear error handling.
+
+## Receipt header
+
+Every receipt must support:
+- Shop logo.
+- Arooj Cloth and Bedsheet Parda.
+- Shop address.
+- Phone number.
+- Optional tax or registration details.
+- Invoice number.
+- Date and time.
+- Cashier name.
+
+## Receipt body
+
+Print:
+- Product name.
+- Variant or size where relevant.
+- Quantity and unit.
+- Actual transaction price.
+- Line discount where applicable.
+- Line total.
+- Subtotal.
+- Bill discount.
+- Tax, if configured.
+- Grand total.
+- Amount paid.
+- Remaining balance.
+- Payment method.
+- Customer name when available.
+
+## Receipt footer
+
+Allow a configurable footer, such as:
+- Thank you for shopping.
+- Return and exchange policy.
+- Contact information.
+- Optional barcode or QR code for the invoice.
+
+Do not add unsupported legal claims or invented registration numbers.
+
+Ensure that text fits within the selected paper width.
+
+Use a simple, readable receipt layout with proper column alignment.
+
+If printing fails after the sale is saved, display a message that the sale is already recorded and allow reprinting without duplicating the invoice.
+
+# PART 9: DYNAMIC SHOP LOGO AND BUSINESS SETTINGS
+
+Create a dedicated Business Settings screen.
+
+The owner must be able to:
+- Upload a logo from the Windows computer.
+- Replace the logo whenever desired.
+- Remove the logo.
+- Preview the logo.
+- Configure shop name.
+- Configure address and phone number.
+- Configure receipt header and footer.
+- Configure paper width.
+- Select the default printer.
+- Configure currency and locale.
+- Configure return policy.
+- Configure tax settings.
+- Configure default units.
+- Configure discount permissions.
+
+The logo must appear on the application dashboard where appropriate and on thermal receipts when supported.
+
+Store a copy of the logo in the application's user-data directory, not in a temporary folder.
+
+Preserve the logo when the application is updated.
+
+Validate supported image formats and resize oversized images for receipt printing.
+
+If the printer cannot render the logo correctly, provide a compatible grayscale or monochrome conversion.
+
+The application must continue working if no logo is configured.
+
+# PART 10: UNITS, VARIANTS, AND STOCK
+
+Support:
+- Piece.
+- Set.
+- Pair.
+- Meter.
+- Yard.
+- Roll.
+- Pack.
+- Kilogram.
+- Gram.
+- Other configurable units.
+
+Allow decimal quantities for fabric length and weight.
+
+A fabric roll or thaan must have its actual starting length recorded.
+
+Track the remaining length after each sale.
+
+If the same fabric design is supplied in multiple rolls, allow roll-level tracking where needed.
+
+Do not assume that all rolls have the same length.
+
+Support product variants for:
+- Size.
+- Color.
+- Design.
+- Brand.
+- Quality.
+- Material.
+- Dimensions.
+- Weight.
+- Other configurable attributes.
+
+Allow optional attributes so the cashier is not forced to fill irrelevant fields.
+
+# PART 11: INVENTORY AND PURCHASING
+
+Include:
+- Opening stock entry.
+- Stock received.
+- Purchase invoices.
+- Supplier records.
+- Supplier payments.
+- Supplier outstanding balances.
+- Purchase returns.
+- Customer returns.
+- Stock adjustments.
+- Damaged goods.
+- Stock movement ledger.
+- Physical stock counts.
+- Low-stock alerts.
+- Inventory valuation.
+- Product cost history.
+- Reorder reports.
+- Stock import and export.
+
+Purchase price and stock may initially be blank or zero for catalog templates. Do not invent actual opening stock.
+
+Provide an initial setup wizard that lets the owner enter purchase cost, selling price, and stock later.
+
+Every stock adjustment must record its reason and the responsible user.
+
+Use database transactions to keep sales, payments, and inventory changes consistent.
+
+# PART 12: CUSTOMER LEDGER AND CREDIT SALES
+
+Support:
+- Customer profiles.
+- Optional phone numbers and addresses.
+- Purchase history.
+- Credit invoices.
+- Partial customer payments.
+- Outstanding balances.
+- Customer statements.
+- Payment receipts.
+- Due-balance reports.
+- Credit limit, if enabled.
+- Customer-specific discounts, if enabled.
+
+Do not mark an invoice as fully paid when a balance remains outstanding.
+
+Do not count a payment against an existing credit invoice as a new sale.
+
+# PART 13: CASH, EXPENSES, AND PROFIT
+
+Implement:
+- Cash register opening balance.
+- Daily cash sales.
+- Cash received against credit.
+- Cash refunds.
+- Cash-in and cash-out.
+- Daily expenses.
+- Cashier closing.
+- Expected versus actual cash.
+- Discrepancy report.
+
+Reports must distinguish:
+- Sales revenue.
+- Discounts.
+- Returns.
+- Cost of goods sold.
+- Gross profit.
+- Expenses.
+- Net profit estimate.
+- Cash collected.
+- Outstanding customer balances.
+- Supplier liabilities.
+- Inventory value.
+
+Document all calculations.
+
+Do not report revenue as profit.
+
+If actual purchase costs are missing, label profit results as incomplete rather than inventing a margin.
+
+# PART 14: REPORTS AND DASHBOARD
+
+Create a clean dashboard with:
+- Today's sales.
+- Number of invoices.
+- Net sales.
+- Discounts and returns.
+- Gross profit.
+- Estimated net profit.
+- Cash received.
+- Credit sales.
+- Customer outstanding balances.
+- Supplier balances.
+- Current inventory value.
+- Low-stock products.
+- Best-selling categories.
+- Top-selling products.
+- Slow-moving products.
+
+Create searchable reports for:
+- Sales.
+- Products.
+- Product variants.
+- Purchases.
+- Suppliers.
+- Customers.
+- Credit balances.
+- Expenses.
+- Returns.
+- Inventory movements.
+- Stock valuation.
+- Cashier shifts.
+- Profit by product and category.
+
+Include date filters and export to CSV/XLSX and PDF where practical.
+
+All reports must use actual database records.
+
+# PART 15: DATA IMPORT AND EXPORT
+
+Provide:
+- Product import template in Excel-compatible CSV or XLSX format.
+- Product export.
+- Opening-stock import.
+- Price import.
+- Customer import.
+- Supplier import.
+- Report exports.
+
+Validate imports before committing changes.
+
+Show a preview with:
+- New records.
+- Updated records.
+- Duplicate records.
+- Invalid rows.
+- Missing required fields.
+
+Never silently overwrite existing prices or stock during import.
+
+Provide a clear error report so non-technical users can correct their files.
+
+# PART 16: BACKUP AND RESTORE
+
+Create:
+- Automatic scheduled local backups.
+- Manual backup button.
+- Configurable backup folder.
+- Optional USB backup.
+- Backup history.
+- Backup verification.
+- Restore workflow.
+- Confirmation before restoring.
+- Backup before restore.
+- Clear backup failure messages.
+
+Use SQLite's appropriate backup mechanisms rather than blindly copying an active database file.
+
+Test restoration in a separate database before claiming that recovery works.
+
+Store business data, logo, configuration, and database files in suitable Windows user-data directories, such as an application-specific folder under LOCALAPPDATA or APPDATA.
+
+Do not store the live database only inside Program Files or inside the application's installation directory.
+
+Installing a software update must not erase the shop's database, logo, settings, or backups.
+
+# PART 17: SECURITY AND ACCESS CONTROL
+
+Support:
+- Owner/admin account.
+- Manager account.
+- Cashier account.
+- Inventory staff account.
+- Secure password hashing.
+- Role-based permissions.
+- Optional manager PIN for exceptional price changes.
+- Permissions for discounts, returns, stock adjustments, purchases, reports, and settings.
+- Login and action audit logs.
+- Safe application error handling.
+- Protection against accidental data deletion.
+
+Do not store passwords in plain text.
+
+Do not log passwords or sensitive authentication information.
+
+Provide a documented first-run admin setup instead of a publicly known default password.
+
+Prevent unauthorized staff from accessing profit and purchase-cost reports if the owner disables those permissions.
+
+# PART 18: USER EXPERIENCE FOR NON-TECHNICAL STAFF
+
+Design the application for simple daily use.
+
+Requirements:
+- Large readable controls.
+- Clear Urdu/English labels where configured.
+- Simple navigation.
+- Search-first product selection.
+- Visual product cards.
+- Fast keyboard shortcuts.
+- Clear price-editing controls.
+- Obvious cart and checkout.
+- Minimal unnecessary forms.
+- Confirmation for destructive actions.
+- Helpful error messages.
+- No requirement to use a command prompt for daily operations.
+
+Provide a first-run setup wizard for:
+1. Shop details.
+2. Logo.
+3. Receipt printer.
+4. Default units.
+5. Admin account.
+6. Optional opening stock.
+7. Backup folder.
+
+Allow the user to skip optional setup and finish it later.
+
+# PART 19: WINDOWS EXECUTABLE AND INNO SETUP INSTALLER
+
+The project must be suitable for Windows deployment.
+
+Create:
+- requirements.txt.
+- A documented virtual environment setup.
+- Application entry point.
+- PyInstaller build configuration.
+- A .spec file where appropriate.
+- Inno Setup script (.iss).
+- Build instructions.
+- Installer testing instructions.
+
+The installer should:
+- Install the application.
+- Create shortcuts.
+- Set the application name correctly.
+- Use the shop's logo or application icon where available.
+- Support clean installation.
+- Preserve business data during upgrades.
+- Avoid deleting user data on uninstall unless the user explicitly chooses that option.
+- Provide a clear uninstall process.
+- Work on the Windows versions actually tested.
+
+The final installation output should include an installer such as:
+
+Arooj_POS_Setup.exe
+
+Do not claim the installer was successfully generated unless the build was actually run and the output verified.
+
+If the current development environment cannot execute Windows packaging tools, generate all necessary configuration and provide exact Windows build instructions.
+
+Test the packaged application separately from running it directly in Python.
+
+# PART 20: AUTOMATED TESTING
+
+Write tests for:
+- First-run database initialization.
+- Seed catalog creation without duplicates.
+- Category and product management.
+- Variant management.
+- Cart product-card actions.
+- Price editing and discount calculations.
+- Decimal quantities.
+- Meter and yard stock deduction.
+- Bundle stock calculations.
+- Invoice numbering.
+- Cash and split payments.
+- Credit sales and partial payments.
+- Returns and refunds.
+- Purchase and supplier balances.
+- Profit calculations.
+- User permissions.
+- Logo replacement.
+- Printer configuration.
+- Backup and restore.
+- Import validation.
+- Application restart and persistence.
+- Database migration.
+- Windows packaging where available.
+
+Use temporary test databases and sample data.
+
+Never test destructive operations against real business data.
+
+Provide a clear test report showing:
+- Passed tests.
+- Failed tests.
+- Tests not run.
+- Known limitations.
+
+Do not fabricate test results.
+
+# PART 21: COMPLETE PROJECT FILES
+
+Generate a well-organized project structure similar to:
+
+arooj_pos/
+    main.py
+    requirements.txt
+    README.md
+    .gitignore
+    build_windows.bat
+    arooj_pos.spec
+    installer/
+        Arooj_POS_Setup.iss
+    app/
+        __init__.py
+        config.py
+        database.py
+        migrations/
+        models/
+        repositories/
+        services/
+            catalog_service.py
+            sales_service.py
+            inventory_service.py
+            purchase_service.py
+            customer_service.py
+            report_service.py
+            backup_service.py
+            printer_service.py
+        ui/
+            main_window.py
+            dashboard.py
+            pos_screen.py
+            product_cards.py
+            cart_widget.py
+            product_management.py
+            customer_management.py
+            supplier_management.py
+            reports.py
+            settings.py
+        resources/
+            icons/
+            placeholders/
+            styles/
+        seed/
+            initial_catalog.py
+    tests/
+
+You may adjust the exact structure as required, but preserve separation of concerns.
+
+Create every necessary file. Do not leave imports pointing to nonexistent modules.
+
+Do not use TODO placeholders for core required functionality.
+
+Do not replace business logic with fake demo data.
+
+Do not generate a large single code block and expect me to manually divide it into files.
+
+Use the available project workspace and file-generation capabilities to create the real project files.
+
+# PART 22: IMPLEMENTATION ORDER
+
+Implement in these phases:
+
+PHASE 1:
+Create the project structure, database, migrations, settings, initial catalog, and first-run setup.
+
+PHASE 2:
+Build the main window, category navigation, product cards, search, variant selection, and cart.
+
+PHASE 3:
+Implement editable transaction prices, discounts, checkout, payments, invoice persistence, and thermal receipts.
+
+PHASE 4:
+Implement inventory, purchasing, suppliers, customer accounts, and credit ledger.
+
+PHASE 5:
+Implement expenses, cash management, reports, logo settings, and backup/restore.
+
+PHASE 6:
+Implement permissions, audit logging, error handling, and security controls.
+
+PHASE 7:
+Write and run automated tests, fix defects, and verify data persistence.
+
+PHASE 8:
+Create PyInstaller packaging configuration, the Inno Setup installer, and the Windows deployment guide.
+
+After each phase, list the files created or changed and the tests performed.
+
+If the environment imposes output or execution limits, continue in manageable batches without discarding previous work or replacing working files with incomplete versions.
+
+# PART 23: ACCEPTANCE CRITERIA
+
+The software is not considered complete until the following practical workflow works:
+
+1. Install the application on a Windows computer.
+2. Open it without internet.
+3. Complete the first-run setup.
+4. See the preloaded Arooj shop catalog and categories.
+5. Add a real product and its variants.
+6. Enter actual stock and prices.
+7. Click a product card to add the correct item to the cart.
+8. Change its quantity.
+9. Edit the cart price for a negotiated customer price.
+10. Verify that the catalog's master price remains unchanged.
+11. Complete a sale and save the invoice exactly once.
+12. Print the invoice on a compatible 58 mm or 80 mm thermal printer.
+13. Reprint the same invoice without duplicating the sale.
+14. Verify stock deductions.
+15. Record a return and verify the stock and financial adjustments.
+16. View correct sales and profit reports based on actual data.
+17. Close and reopen the application without losing saved data.
+18. Create a backup and restore it into a test environment.
+19. Build and test the Windows installer.
+20. Install an update without losing the database, logo, or settings.
+
+# FINAL EXECUTION INSTRUCTION
+
+Start building the actual Python project now.
+
+First, inspect the available project workspace and development environment. Then create the project files and implement Phase 1.
+
+Continue through the phases systematically, completing as much as the available environment can genuinely implement and test.
+
+Do not stop after providing architecture advice.
+
+Do not claim that code exists unless the file has been created.
+
+Do not claim tests passed unless they were executed.
+
+Do not claim thermal printer compatibility unless verified or accurately documented as untested.
+
+Do not invent real inventory, supplier prices, opening stock, or business financial data.
+
+The final deliverable must be a real, organized Python desktop POS project for Arooj Cloth and Bedsheet Parda, with a preloaded editable catalog, card-based billing, editable cart prices, thermal receipt printing, logo settings, offline database, inventory management, financial reporting, backup and restore, and a Windows installer workflow.
